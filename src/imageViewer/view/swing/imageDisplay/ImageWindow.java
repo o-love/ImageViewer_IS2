@@ -1,6 +1,6 @@
 package imageViewer.view.swing.imageDisplay;
 
-import java.awt.Image;
+import java.awt.*;
 
 
 public class ImageWindow {
@@ -9,19 +9,19 @@ public class ImageWindow {
         return new ImageWindow(image.getWidth(null), image.getHeight(null));
     }
 
-    public static ImageWindow of(int width, int height) {
-        return new ImageWindow(width, height);
-    }
 
     private int x;
     private int y;
     private int width;
     private int height;
-    private double ratio;
+    private final double ratio;
+
+    private int offsetX;
 
 
     private ImageWindow(int width, int height) {
         this.x = 0;
+        this.offsetX = 0;
         this.y = 0;
         this.width = width;
         this.height = height;
@@ -30,8 +30,8 @@ public class ImageWindow {
 
     public ImageWindow adjustTo(int width, int height) {
         if (requireScale(width, height)) {
-            this.width = scaleOnHeight(width,height) ? width : (int) (height * this.ratio);
-            this.height = scaleOnHeight(width,height) ? (int) (width / this.ratio) : height;
+            this.width = scaleOnHeight(width, height) ? width : (int) (height * this.ratio);
+            this.height = scaleOnHeight(width, height) ? (int) (width / this.ratio) : height;
         }
         this.x = (width - this.width) >> 1;
         this.y = (height - this.height) >> 1;
@@ -47,7 +47,12 @@ public class ImageWindow {
     }
 
     public int x() {
-        return x;
+        return x + offsetX;
+    }
+
+    public ImageWindow offsetX(int offsetX) {
+        this.offsetX = offsetX;
+        return this;
     }
 
     public int y() {

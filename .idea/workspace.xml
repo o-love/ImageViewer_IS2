@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a887f59-7ebe-4408-8c02-36161ef4d187" name="Changes" comment="Finished Model and Persistence">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/presenter/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/presenter/ImagePresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/view/ImageDisplay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/GUISwing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/MainPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageDisplaySwing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageWindow.java" afterDir="false" />
+    <list default="true" id="6a887f59-7ebe-4408-8c02-36161ef4d187" name="Changes" comment="ImageViewer with MVC done">
+      <change afterPath="$PROJECT_DIR$/src/imageViewer/base/IntEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/presenter/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/base/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/presenter/ImagePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/presenter/ImagePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/view/ImageDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/view/ImageDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/view/swing/MainPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageDisplaySwing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageDisplaySwing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,10 +23,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="ocoy4n7s" />
@@ -35,26 +37,30 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="ProjectId" id="2Iibz9rt5phsMJYU7KktpdUur9s" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="imageViewer.view" />
@@ -88,7 +94,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670667615367</updated>
-      <workItem from="1670667616132" duration="6898000" />
+      <workItem from="1670667616132" duration="7153000" />
+      <workItem from="1670757984259" duration="3509000" />
+      <workItem from="1670773213131" duration="1233000" />
+      <workItem from="1671379053591" duration="1782000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670667668861</created>
@@ -104,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670673621481</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ImageViewer with MVC done">
+      <created>1670677538238</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670677538238</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Finished Model and Persistence" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Model and Persistence" />
+    <MESSAGE value="ImageViewer with MVC done" />
+    <option name="LAST_COMMIT_MESSAGE" value="ImageViewer with MVC done" />
   </component>
 </project>

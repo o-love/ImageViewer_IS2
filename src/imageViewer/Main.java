@@ -5,7 +5,6 @@ import imageViewer.model.Image;
 import imageViewer.model.persistence.FileImageLoader;
 import imageViewer.presenter.ImagePresenter;
 import imageViewer.view.swing.GUISwing;
-import imageViewer.view.swing.MainPanel;
 import imageViewer.view.swing.imageDisplay.ImageDisplaySwing;
 
 import javax.swing.*;
@@ -18,7 +17,6 @@ public class Main {
     }
 
     private Image baseImage;
-    private MainPanel.Builder mainPanelBuilder;
     private ImageDisplaySwing imageDisplaySwing;
     private ImagePresenter imagePresenter;
 
@@ -42,7 +40,6 @@ public class Main {
 
     private void setupView() {
         this.imageDisplaySwing = new ImageDisplaySwing();
-        this.mainPanelBuilder = MainPanel.Builder.from(imageDisplaySwing);
     }
 
     private void setupPresenter() {
@@ -51,10 +48,12 @@ public class Main {
 
     private void finishSetup() {
         this.imagePresenter.loadCurrentImageToView();
-        this.mainPanelBuilder
-                .onNextImage(this.imagePresenter::onNextImage)
-                .onPreviousImage(this.imagePresenter::onPreviousImage);
-        SwingUtilities.invokeLater(() -> new GUISwing(this.mainPanelBuilder.build(), "Image Viewer"));
+        this.imageDisplaySwing.withMouseEvents(
+                this.imagePresenter::onGrab,
+                this.imagePresenter::whileGrabbed,
+                this.imagePresenter::onRelease
+        );
+        SwingUtilities.invokeLater(() -> new GUISwing(this.imageDisplaySwing, "Image Viewer"));
     }
 
 }
