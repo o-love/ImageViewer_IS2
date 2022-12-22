@@ -48,11 +48,8 @@ public class Main {
 
     private void finishSetup() {
         this.imagePresenter.loadCurrentImageToView();
-        this.imageDisplaySwing.withMouseEvents(
-                this.imagePresenter::onGrab,
-                this.imagePresenter::whileGrabbed,
-                this.imagePresenter::onRelease
-        );
+        this.imageDisplaySwing.onDragged(this.imagePresenter::whileGrabbed);
+        this.imageDisplaySwing.onReleased(this.imagePresenter::onRelease);
         SwingUtilities.invokeLater(() -> new GUISwing(this.imageDisplaySwing, "Image Viewer"));
     }
 

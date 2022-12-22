@@ -2,61 +2,45 @@ package imageViewer.presenter;
 
 import imageViewer.model.Image;
 import imageViewer.view.ImageDisplay;
-import imageViewer.view.swing.imageDisplay.ImageDisplaySwing;
 
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 public class ImagePresenter {
 
-    public static ImagePresenter of(Image image, ImageDisplaySwing imageDisplaySwing) {
+    public static ImagePresenter of(Image image, ImageDisplay imageDisplay) {
         Objects.requireNonNull(image);
-        Objects.requireNonNull(imageDisplaySwing);
+        Objects.requireNonNull(imageDisplay);
 
-        return new ImagePresenter(image, imageDisplaySwing);
+        return new ImagePresenter(image, imageDisplay);
     }
-
-    private static final int IMAGE_OFFSET_TRIGGER = 10;
 
     private Image image;
-    private final ImageDisplay imageDisplaySwing;
-    private int initialGrabPosition;
+    private final ImageDisplay imageDisplay;
 
-    private ImagePresenter(Image image, ImageDisplaySwing imageDisplaySwing) {
+    private ImagePresenter(Image image, ImageDisplay imageDisplay) {
         this.image = image;
-        this.imageDisplaySwing = imageDisplaySwing;
+        this.imageDisplay = imageDisplay;
     }
 
-    public void onGrab(int value) {
-        initialGrabPosition = value;
+    public void whileGrabbed(int offset) {
+        loadCurrentImageToView(offset);
+
+        if (offset == 0) return;
+        if (offset < 0) loadPartialNextImageToView(offset);
+        else loadPartialPrevImageToView(offset);
     }
 
-    public void whileGrabbed(int value) {
-        imageDisplaySwing.setHorizontalOffset(currentGrabPosition(value));
-    }
-
-    public void onRelease(int value) {
-        if (isPrevTrigger(value)) {
-            onPreviousImage();
-        } else if (isNextTrigger(value)) {
-            onNextImage();
-        } else {
-            imageDisplaySwing.setHorizontalOffset(0);
+    public void onRelease(int offset) {
+        if (isNotOffsetTrigger(offset)) {
+            return;
         }
+
+        if (offset > 0) onNextImage();
+        else onPreviousImage();
     }
 
-    private int currentGrabPosition(int value) {
-        return value - initialGrabPosition;
-    }
-
-    private boolean isNextTrigger(int value) {
-        return currentGrabPosition(value) < -IMAGE_OFFSET_TRIGGER;
-    }
-
-    private boolean isPrevTrigger(int value) {
-        return currentGrabPosition(value) > IMAGE_OFFSET_TRIGGER;
+    private boolean isNotOffsetTrigger(int value) {
+        return !(Math.abs(value) > imageDisplay.width() / 2);
     }
 
     public void onNextImage() {
@@ -69,12 +53,29 @@ public class ImagePresenter {
         loadCurrentImageToView();
     }
 
+    public void loadPartialPrevImageToView(int offset) {
+        Image prev = image.prev();
+        this.imageDisplay.paintImage(prev.data(), imageWindowOf(prev).offsetX(offset - imageDisplay.width()));
+    }
+
+    public void loadPartialNextImageToView(int offset) {
+        Image next = image.next();
+        this.imageDisplay.paintImage(next.data(), imageWindowOf(next).offsetX(offset + imageDisplay.width()));
+    }
+
     public void loadCurrentImageToView() {
-        try {
-            imageDisplaySwing.show(ImageIO.read(new File(image.location())));
-        } catch (IOException e) {
-            throw new RuntimeException("Image location passed to presenter caused: ", e);
-        }
+        loadCurrentImageToView(0);
+    }
+
+    public void loadCurrentImageToView(int offset) {
+        imageDisplay.clear();
+        imageDisplay.paintImage(this.image.data(), imageWindowOf(this.image).offsetX(offset + imageDisplay.width()));
+    }
+
+    private ImageDisplay.ImageWindow imageWindowOf(Image image) {
+        ImageDisplay.ImageWindow window = new ImageDisplay.ImageWindow(image.width(), image.height());
+        window.adjustTo(imageDisplay.width(), imageDisplay.height());
+        return window;
     }
 
 }

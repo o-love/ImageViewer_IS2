@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a887f59-7ebe-4408-8c02-36161ef4d187" name="Changes" comment="ImageViewer with MVC done">
-      <change afterPath="$PROJECT_DIR$/src/imageViewer/base/IntEvent.java" afterDir="false" />
+    <list default="true" id="6a887f59-7ebe-4408-8c02-36161ef4d187" name="Changes" comment="MVP added. Swiping through images with only one image displayed at a time.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageViewer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageViewer/presenter/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/base/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/model/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/model/persistence/FileImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/model/persistence/FileImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/presenter/Event.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageViewer/presenter/ImagePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/presenter/ImagePresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageViewer/view/ImageDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/view/ImageDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageViewer/view/swing/MainPanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageDisplaySwing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageDisplaySwing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/imageViewer/view/swing/imageDisplay/ImageWindow.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +97,9 @@
       <workItem from="1670667616132" duration="7153000" />
       <workItem from="1670757984259" duration="3509000" />
       <workItem from="1670773213131" duration="1233000" />
-      <workItem from="1671379053591" duration="1782000" />
+      <workItem from="1671379053591" duration="2279000" />
+      <workItem from="1671463829421" duration="4288000" />
+      <workItem from="1671709183980" duration="521000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670667668861</created>
@@ -120,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670677538238</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="MVP added. Swiping through images with only one image displayed at a time.">
+      <created>1671381026412</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671381026412</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +139,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Finished Model and Persistence" />
     <MESSAGE value="ImageViewer with MVC done" />
-    <option name="LAST_COMMIT_MESSAGE" value="ImageViewer with MVC done" />
+    <MESSAGE value="MVP added. Swiping through images with only one image displayed at a time." />
+    <option name="LAST_COMMIT_MESSAGE" value="MVP added. Swiping through images with only one image displayed at a time." />
   </component>
 </project>
