@@ -18,7 +18,7 @@ public class ImageDisplaySwing extends JPanel implements ImageDisplay {
     private final java.util.List<Order> orders;
     private IntEvent onDrag = IntEvent.NULL;
     private IntEvent onRelease = IntEvent.NULL;
-    private int x;
+    private int grabbedX;
 
     public ImageDisplaySwing() {
         orders = new ArrayList<>();
@@ -31,13 +31,15 @@ public class ImageDisplaySwing extends JPanel implements ImageDisplay {
 
             @Override
             public void mousePressed(MouseEvent e) {
+                grabbedX = e.getX();
                 grabbed = true;
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 grabbed = false;
-                onRelease.execute(e.getX());
+                onRelease.execute(e.getX() - grabbedX);
+                grabbedX = 0;
             }
 
             @Override
@@ -56,7 +58,7 @@ public class ImageDisplaySwing extends JPanel implements ImageDisplay {
             public void mouseDragged(MouseEvent e) {
                 if (!grabbed) return;
 
-                onDrag.execute(e.getX());
+                onDrag.execute(e.getX() - grabbedX);
             }
 
             @Override

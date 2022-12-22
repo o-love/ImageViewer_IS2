@@ -47,10 +47,10 @@ public class Main {
     }
 
     private void finishSetup() {
-        this.imagePresenter.loadCurrentImageToView();
         this.imageDisplaySwing.onDragged(this.imagePresenter::whileGrabbed);
         this.imageDisplaySwing.onReleased(this.imagePresenter::onRelease);
         SwingUtilities.invokeLater(() -> new GUISwing(this.imageDisplaySwing, "Image Viewer"));
+        this.imagePresenter.loadCurrentImageToView();
     }
 
 }

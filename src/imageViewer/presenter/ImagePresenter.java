@@ -7,6 +7,8 @@ import java.util.Objects;
 
 public class ImagePresenter {
 
+    private static final int OFFSET_TRIGGER_FACTOR = 4;
+
     public static ImagePresenter of(Image image, ImageDisplay imageDisplay) {
         Objects.requireNonNull(image);
         Objects.requireNonNull(imageDisplay);
@@ -31,16 +33,19 @@ public class ImagePresenter {
     }
 
     public void onRelease(int offset) {
+        imageDisplay.clear();
+
         if (isNotOffsetTrigger(offset)) {
+            loadCurrentImageToView();
             return;
         }
 
-        if (offset > 0) onNextImage();
+        if (offset < 0) onNextImage();
         else onPreviousImage();
     }
 
     private boolean isNotOffsetTrigger(int value) {
-        return !(Math.abs(value) > imageDisplay.width() / 2);
+        return !(Math.abs(value) > imageDisplay.width() / OFFSET_TRIGGER_FACTOR);
     }
 
     public void onNextImage() {
@@ -69,7 +74,7 @@ public class ImagePresenter {
 
     public void loadCurrentImageToView(int offset) {
         imageDisplay.clear();
-        imageDisplay.paintImage(this.image.data(), imageWindowOf(this.image).offsetX(offset + imageDisplay.width()));
+        imageDisplay.paintImage(this.image.data(), imageWindowOf(this.image).offsetX(offset));
     }
 
     private ImageDisplay.ImageWindow imageWindowOf(Image image) {
