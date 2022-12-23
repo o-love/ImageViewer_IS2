@@ -2,8 +2,8 @@ package imageViewer;
 
 
 import imageViewer.model.Image;
-import imageViewer.model.persistence.FileImageLoader;
 import imageViewer.presenter.ImagePresenter;
+import imageViewer.view.persistence.FileImageLoader;
 import imageViewer.view.swing.GUISwing;
 import imageViewer.view.swing.imageDisplay.ImageDisplaySwing;
 

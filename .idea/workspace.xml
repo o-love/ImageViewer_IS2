@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a887f59-7ebe-4408-8c02-36161ef4d187" name="Changes" comment="Semi-Functional: All previous problems fixed. &#10;New problem: Image doesn't display until user clicks on screen.">
+    <list default="true" id="6a887f59-7ebe-4408-8c02-36161ef4d187" name="Changes" comment="Fully functional: Image displays when opening app.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +96,7 @@
       <workItem from="1671463829421" duration="4288000" />
       <workItem from="1671709183980" duration="521000" />
       <workItem from="1671716051117" duration="2508000" />
-      <workItem from="1671809645625" duration="694000" />
+      <workItem from="1671809645625" duration="1672000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1670667668861</created>
@@ -133,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671718013047</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fully functional: Image displays when opening app.">
+      <created>1671813485729</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671813485729</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +152,7 @@
     <MESSAGE value="ImageViewer with MVC done" />
     <MESSAGE value="MVP added. Swiping through images with only one image displayed at a time." />
     <MESSAGE value="Semi-Functional: All previous problems fixed. &#10;New problem: Image doesn't display until user clicks on screen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Semi-Functional: All previous problems fixed. &#10;New problem: Image doesn't display until user clicks on screen." />
+    <MESSAGE value="Fully functional: Image displays when opening app." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fully functional: Image displays when opening app." />
   </component>
 </project>
