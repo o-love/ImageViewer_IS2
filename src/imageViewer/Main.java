@@ -3,7 +3,7 @@ package imageViewer;
 
 import imageViewer.model.Image;
 import imageViewer.presenter.ImagePresenter;
-import imageViewer.view.persistence.FileImageLoader;
+import imageViewer.view.persistence.ImageLoader;
 import imageViewer.view.swing.GUISwing;
 import imageViewer.view.swing.imageDisplay.ImageDisplaySwing;
 
@@ -23,7 +23,7 @@ public class Main {
     public void setupAll() {
         try {
             setupModel();
-        } catch (IOException | FileImageLoader.NoImagesException e) {
+        } catch (IOException | ImageLoader.NoImagesException e) {
             throw new RuntimeException(e);
         }
 
@@ -34,8 +34,8 @@ public class Main {
         finishSetup();
     }
 
-    private void setupModel() throws IOException, FileImageLoader.NoImagesException {
-        this.baseImage = FileImageLoader.from(new File("images")).load();
+    private void setupModel() throws IOException, ImageLoader.NoImagesException {
+        this.baseImage = ImageLoader.fromDir(new File("images")).load();
     }
 
     private void setupView() {

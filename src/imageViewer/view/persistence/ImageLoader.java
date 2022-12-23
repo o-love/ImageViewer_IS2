@@ -7,26 +7,28 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
+import java.util.Objects;
 
-public interface FileImageLoader {
+public interface ImageLoader {
 
     Image load();
 
     class NoImagesException extends Exception {
     }
 
-    static FileImageLoader from(File file) throws IOException, NoImagesException {
+    static ImageLoader fromDir(File file) throws IOException, NoImagesException {
         File[] files = file.listFiles(ImageFileUtil.FILE_IMAGE_FILTER);
 
         if (files == null) throw new IOException("Unable to access directory");
         if (files.length == 0) throw new NoImagesException();
 
-        return FileImageLoader.create(files);
+        return ImageLoader.from(files);
     }
 
 
-    private static FileImageLoader create(File[] files) {
-        return new FileImageLoader() {
+    private static ImageLoader from(File[] files) {
+        Objects.requireNonNull(files);
+        return new ImageLoader() {
             @Override
             public Image load() {
                 return imageOf(0);
